@@ -53,22 +53,10 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/advocacy" element={<Advocacy />} />
-          {/* Removed specific subnav routes for Advocacy */}
-          {/* <Route path="/advocacy/education" element={<Advocacy />} /> */}
-          {/* <Route path="/advocacy/environment" element={<Advocacy />} /> */}
-          {/* <Route path="/advocacy/social-justice" element={<Advocacy />} /> */}
           <Route path="/programs" element={<Programs />} />
-          {/* Removed specific subnav routes for Programs */}
-          {/* <Route path="/programs/youth-leadership" element={<Programs />} /> */}
-          {/* <Route path="/programs/community-service" element={<Programs />} /> */}
-          {/* <Route path="/programs/global-education" element={<Programs />} /> */}
           <Route path="/research" element={<Research />} />
           <Route path="/Publications" element={<Publications />} />
           <Route path="/Membership" element={<Membership menuOpen={menuOpen} />} />
-          {/* Removed specific subnav routes for Research */}
-          {/* <Route path="/research/publications" element={<Research />} /> */}
-          {/* <Route path="/research/projects" element={<Research />} /> */}
-          {/* <Route path="/research/partners" element={<Research />} /> */}
           <Route path="/integrity" element={<Integrity />} />
           <Route path="/mandate" element={<Mandate />} />
           <Route path="/take-action" element={<TakeAction />} />
