@@ -77,30 +77,69 @@ const ActionBtn = styled.a`
 
 // Styled component for the dotted divider line
 const Divider = styled.div`
-  border-bottom: 1px dotted var(--andover-accent);
   width: 100%;
   margin: 2.8rem auto; /* Adjusted margin top/bottom for more precise spacing */
 `;
 
-// Styled component for the main 3-column grid section
+// 1. Add section headers for Quick Links and Contact Us
+const SectionHeader = styled.div`
+  font-weight: bold;
+  font-size: 1.1rem;
+  font-family: var(--andover-font-sans);
+  margin-bottom: 1rem;
+  color: ${DARK_BLUE};
+  letter-spacing: 1px;
+`;
+// 2. Adjust MainFooterGrid for new column order and layout
 const MainFooterGrid = styled.div`
   display: grid;
-  grid-template-columns: 1.2fr 2.1fr 1.8fr; /* Fine-tuned column widths based on image */
-  gap: 4.5rem; /* Increased gap between columns for more space */
-  padding-bottom: 0; /* Remove bottom padding, handled by wrapper */
-  align-items: start; /* Align grid items to the top */
-
-  @media (max-width: 1024px) { /* Adjust columns for smaller desktops/tablets */
-    grid-template-columns: 1fr 1fr; /* Stack to 2 columns */
-    gap: 2.5rem; /* Adjusted gap for 2 columns */
+  grid-template-columns: 1.3fr 1.2fr 2.2fr;
+  gap: 4.5rem;
+  padding-bottom: 0;
+  align-items: start;
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
     padding-bottom: 0;
   }
-
+`;
+// 3. Adjust Contact details styling for left alignment
+const ContactDetails = styled.div`
+  text-align: left;
+  color: ${DARK_BLUE};
+  font-family: var(--andover-font-sans);
+  p {
+    margin: 0 0 1rem 0;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  div {
+    font-size: 1rem;
+    margin-bottom: 0.4rem;
+  }
   @media (max-width: 768px) {
-    grid-template-columns: 1fr; /* Stack columns on mobile */
-    gap: 2rem;
-    text-align: center; /* Center content on mobile */
-    padding-bottom: 0;
+    text-align: center;
+  }
+`;
+// 4. Add a bottom row for socials + copyright
+const FooterBottomBar = styled.div`
+  width: 100%;
+  background: var(--andover-blue);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.1rem 0 1rem 0; /* less vertical padding */
+  flex-wrap: wrap;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+    justify-content: center;
   }
 `;
 
@@ -178,14 +217,14 @@ const AddressDescription = styled.div`
 `;
 
 const QuickLinks = styled.div`
-  margin: 0;
+  margin: 0 0 0 16px; /* Add left margin */
   display: flex;
-  flex-direction: column; /* Stack links vertically */
-  gap: 0.8rem; /* Space between links */
-  align-items: flex-end; /* Align links to the right within column */
-
+  flex-direction: column;
+  gap: 0.8rem;
+  align-items: flex-start; /* Left align links within the column */
   @media (max-width: 768px) {
-    align-items: center; /* Center links on mobile */
+    align-items: center; /* Center on mobile */
+    margin: 0;
   }
 `;
 
@@ -196,7 +235,8 @@ const QuickLink = styled.a`
   text-decoration: none; /* Ensure no underline by default */
 
   &:hover {
-    text-decoration: underline;
+    text-decoration: none;
+    color: white;
   }
 `;
 
@@ -234,6 +274,23 @@ const SocialIcon = styled.span`
   }
 `;
 
+// 5. SocialsInline: Social icons within logo column, inherit/integrate logo width
+const SocialsInline = styled.div`
+  width: fit-content;
+  min-width: 130px;
+  max-width: 250px;
+  display: flex;
+  justify-content: space-between;
+  margin: 1.1rem 0 0 0;
+  align-items: center;
+  @media (max-width: 768px) {
+    margin: 1.1rem auto 0 auto;
+    min-width: unset;
+    width: 80vw;
+    max-width: 250px;
+  }
+`;
+
 const ActionRow = styled.div`
   display: flex;
   align-items: center;
@@ -252,7 +309,7 @@ const ActionRow = styled.div`
 
 const Footer = () => (
   <FooterBar>
-    <FooterContentWrapper> {/* Wrap content for max-width and padding */}
+    <FooterContentWrapper>
       <ActionRow>
         <TakeActionHeading>Take Action…</TakeActionHeading>
         <Actions>
@@ -263,59 +320,52 @@ const Footer = () => (
       </ActionRow>
       <Divider />
       <MainFooterGrid>
+        {/* Column 1: Logo & Branding + Social Icons (below branding) */}
         <LogoBranding>
-          <FooterLogo src="/dmun-white-logo.png" alt="DMUN Foundation Logo" /> {/* Updated to Header Logo.png */}
+          <FooterLogo src="/dmun-white-logo.png" alt="DMUN Foundation Logo" />
           <InstitutionName>
-           <div>DMUN Foundation</div> {/* Capitalized based on image */}
+            <div>DMUN FOUNDATION</div>
           </InstitutionName>
+          <SocialsInline>
+            <SocialIcon as="a" href="https://www.instagram.com/discovermun/" target="_blank" rel="noopener noreferrer"><img src="/instagram-icon.png" alt="Instagram" /></SocialIcon>
+            <SocialIcon as="a" href="https://www.linkedin.com/company/dmun-foundation/" target="_blank" rel="noopener noreferrer"><img src="/linkedin-icon.png" alt="LinkedIn" /></SocialIcon>
+            <SocialIcon as="a" href="https://www.youtube.com/@dmunfoundation" target="_blank" rel="noopener noreferrer"><img src="/Youtube-icon.png" alt="Youtube" /></SocialIcon>
+          </SocialsInline>
         </LogoBranding>
-
-        <AddressDescription>
-          <p>
-            The Secretariat of the DMUN Foundation:<br/>
-            4th Floor, 12 Gangnamdaero 156-gil, Seoul, Republic of Korea 06035<br/>
-            </p>
-            <p>
-            The Liaison Office of the DMUN Foundation in the Americas:<br/>
-            Unit 1814, 50 Causeway St., Boston, MA, USA 02114
-          </p>
+        {/* Column 2: Quick Links */}
+        <QuickLinks>
+          <SectionHeader>Quick Links</SectionHeader>
+          <QuickLink href="/donor-relations">Donor Relations</QuickLink>
+          <QuickLink href="/integrity">Integrity</QuickLink>
+          <QuickLink href="/newsroom">News</QuickLink>
+          <QuickLink href="/Membership">Membership</QuickLink>
+          <QuickLink href="https://docs.google.com/document/d/1QTCCh-nEZfUvIFdN0KzOfbDRWMk05jKL6IOv9okRB5c/edit?usp=sharing">Privacy Policy</QuickLink>
+          <QuickLink href="https://docs.google.com/document/d/1QTCCh-nEZfUvIFdN0KzOfbDRWMk05jKL6IOv9okRB5c/edit?usp=sharing">Terms of Use</QuickLink>
+        </QuickLinks>
+        {/* Column 3: Contact Information */}
+        <ContactDetails>
+          <SectionHeader>Contact Us</SectionHeader>
+          <p>The Secretariat of the DMUN Foundation:<br/>
+          4th Floor, 12 Gangnamdaero 156-gil, Seoul, Republic of Korea 06035</p>
+          <p>The Liaison Office of the DMUN Foundation in the Americas:<br/>
+          Unit 1814, 50 Causeway St., Boston, MA, USA 02114</p>
           <div>enquiries@dmun.org</div>
           <div>Liaison Office: +1 (339) 927 8826</div>
           <div>Secretariat: +82 10 5696 8302</div>
-        </AddressDescription>
-
-        <div> {/* Container for Quick Links and Socials in the right column */}
-          <QuickLinks> {/* Quick Links */}
-            <QuickLink href="/donor-relations">Donor Relations</QuickLink>
-            <QuickLink href="/integrity">Integrity</QuickLink>
-            <QuickLink href="/newsroom">News</QuickLink>
-            <QuickLink href="/Membership">Membership</QuickLink>
-            <QuickLink href="https://docs.google.com/document/d/1QTCCh-nEZfUvIFdN0KzOfbDRWMk05jKL6IOv9okRB5c/edit?usp=sharing">Privacy Policy</QuickLink>
-            <QuickLink href="https://docs.google.com/document/d/1QTCCh-nEZfUvIFdN0KzOfbDRWMk05jKL6IOv9okRB5c/edit?usp=sharing">Terms of Use</QuickLink>
-          </QuickLinks>
-
-          <Socials> {/* Social icons */}
-            <SocialIcon as="a" href="https://www.instagram.com/discovermun/" target="_blank" rel="noopener noreferrer">
-              <img src="/instagram-icon.png" alt="Instagram" />
-            </SocialIcon>
-            <SocialIcon as="a" href="https://www.linkedin.com/company/dmun-foundation/" target="_blank" rel="noopener noreferrer">
-              <img src="/linkedin-icon.png" alt="LinkedIn" />
-            </SocialIcon>
-            <SocialIcon as="a" href="https://www.youtube.com/@dmunfoundation" target="_blank" rel="noopener noreferrer">
-              <img src="/Youtube-icon.png" alt="Youtube" />
-            </SocialIcon>
-          </Socials>
-        </div>
+        </ContactDetails>
       </MainFooterGrid>
     </FooterContentWrapper>
-    <CopyrightText>© 2025 DMUN Foundation, All Rights Reserved.</CopyrightText>
+    {/* Bottom bar: copyright only */}
+    <FooterBottomBar style={{justifyContent: 'center'}}>
+      <CopyrightText>© 2025 DMUN Foundation, All Rights Reserved.</CopyrightText>
+    </FooterBottomBar>
   </FooterBar>
 );
 
 // Add new styled component for copyright text
 const CopyrightText = styled.div`
   text-align: center;
-  color: var(--andover-accent);
+  color: black;
   font-family: var(--andover-font-sans);
   font-size: 0.9rem;
   padding: 1.5rem 0;
