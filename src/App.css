@@ -1,0 +1,110 @@
+/* Reset and base styles for Andover Clone */
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+:root {
+  --andover-light-blue: #e6f0fa;
+  --andover-blue: #44b8f3;
+  --andover-dark-blue: #002147;
+  --andover-accent: #fff;
+
+  --andover-font-sans: 'Benton Sans', 'News Gothic', 'Franklin Gothic', Arial, Helvetica, sans-serif;
+  --andover-font-serif: 'Miller Text', Georgia, Times, serif;
+  --andover-font-slab: 'Yorkten Slab', serif;
+}
+
+body {
+  font-family: var(--andover-font-serif);
+  background: var(--andover-light-blue);
+  color: var(--andover-dark-blue);
+  min-height: 100vh;
+}
+
+a, a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--andover-font-serif);
+  font-weight: 700;
+  margin: 0 0 0.5em 0;
+  color: var(--andover-dark-blue);
+}
+
+p {
+  font-family: var(--andover-font-sans);
+  margin: 0 0 1em 0;
+}
+
+#root {
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  border: none;
+}
+
+main {
+  flex: 1;
+  box-sizing: border-box;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+/* Remove any potential conflicting borders */
+.HeroWrapper,
+.BorderedContentWrapper {
+  border: none !important;
+}
+
+.main-content {
+  padding-top: 70px; /* Height of the header */
+  min-height: calc(100vh - 70px - 100px); /* Full viewport height minus header and footer */
+}
