@@ -8,9 +8,9 @@ import { div } from 'framer-motion/client';
 import { users } from '../db';
 import { UserContext } from '../UserContext';
 
-const ABBOT_BLUE = '#44b8f3'; // The new primary color
-const DARK_BLUE = '#002147'; // Keeping for high contrast on light backgrounds
-const LIGHT_BLUE = '#97e1e6'; // Assuming a light blue color for the filled part or other accents
+const ABBOT_BLUE = '#44b8f3'; 
+const DARK_BLUE = '#002147'; 
+const LIGHT_BLUE = '#97e1e6'; 
 
 const sectionVariants = {
   hidden: { opacity: 0, y: 50 },
@@ -18,10 +18,10 @@ const sectionVariants = {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.4, // Even faster duration for section entry
+      duration: 0.4,
       ease: "easeOut",
       when: "beforeChildren",
-      staggerChildren: 0.05 // Even smaller stagger for children
+      staggerChildren: 0.05 
     }
   }
 };
@@ -32,13 +32,13 @@ const itemVariants = {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.3, // Even faster duration for individual items
+      duration: 0.3, 
       ease: "easeOut"
     }
   }
 };
 
-// Main content frame with refined structure
+
 const MainContentFrame = styled.div`
   width: 100vw;
   position: relative;
@@ -57,7 +57,7 @@ const MainContentFrame = styled.div`
   }
 `;
 
-// Content wrapper for the actual content (excluding hero)
+
 const ContentWrapper = styled.div`
   max-width: 1280px;
   margin: 0 auto;
@@ -196,7 +196,7 @@ const StatLabel = styled.div`
   font-family: var(--andover-font-sans);
 `;
 
-// SVG Pie Chart component for animation
+
 const StatPieChartSVG = ({ percentage }) => {
   const radius = 45; // Radius of the circle
   const circumference = 2 * Math.PI * radius;
@@ -204,7 +204,7 @@ const StatPieChartSVG = ({ percentage }) => {
 
   return (
     <svg width="100" height="100" viewBox="0 0 100 100" style={{ transform: 'rotate(-90deg)', marginBottom: '0.8rem' }}>
-      {/* Background circle */}
+    
       <circle
         cx="50"
         cy="50"
@@ -213,7 +213,7 @@ const StatPieChartSVG = ({ percentage }) => {
         stroke={DARK_BLUE} /* Use dark blue for the unfilled part */
         strokeWidth="10"
       />
-      {/* Animated circle */}
+     
       <motion.circle
         cx="50"
         cy="50"
@@ -248,7 +248,6 @@ const StatPieChartSubLabel = styled.div`
   font-family: var(--andover-font-sans);
 `;
 
-// Placeholder icons
 const GlobeIcon = () => <span>🌐</span>;
 const USAIcon = () => <span>🇺🇳</span>;
 const BuildingIcon = () => <span>🏛️</span>;
@@ -258,14 +257,13 @@ const CityIcon = () => <span>🏙️</span>;
 const TownIcon = () => <span>🏘️</span>;
 const MoneyIcon = () => <span role="img" aria-label="money">💸</span>;
 
-// Array of stat data
+
 const statsData = [
-  // First row
+
   { id: 1, type: 'pie', percentage: 46, label: 'Members', number: '26,927', pieLabel: '49% Male, 48% Female, 3% Others', gridColumn: 'span 3', gridRow: '1' },
   { id: 2, type: 'icon', icon: <GlobeIcon />, label: 'Countries', number: '161', gridColumn: 'span 3', gridRow: '1' },
   { id: 3, type: 'icon', icon: <USAIcon />, label: 'Intergovermental Bodies Engaged', number: '37', gridColumn: 'span 3', gridRow: '1' },
   { id: 4, type: 'icon', icon: <BuildingIcon />, label: 'Year of Founding', number: '2021', gridColumn: 'span 3', gridRow: '1' },
-  // Second row
   { id: 6, type: 'icon', icon: <HandsIcon />, label: 'Inputs,Statements<br/>and Interventions Produced in 2024', number: '32', gridColumn: 'span 3', gridRow: '2' },
   { id: 7, type: 'icon', icon: <BookIcon />, label: 'Programs', number: '12', gridColumn: 'span 3', gridRow: '2' },
   { id: 8, type: 'icon', icon: <CityIcon />, label: 'Raised in 2024', number: '$24K', gridColumn: 'span 3', gridRow: '2' },
@@ -319,7 +317,7 @@ const Circles = styled.div`
   }
 `;
 
-// Styled components for Day in the Life text elements
+
 const DayInLifeText = styled.div`
   grid-column: span 4;
   text-align: center;
@@ -355,7 +353,6 @@ const DayInLifeText = styled.div`
   }
 `;
 
-// New styled component for consistent padding and alignment within GlanceSectionContainer
 const GlanceContentArea = styled.div`
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -724,7 +721,7 @@ const eventsData = [
     link: 'https://mymun.com/conferences/dmun-debate-2025'
   }
 ];
-// Data for the interactive section (Placeholder)
+
 const glanceData = [
   { id: 1, title: 'Programs', path: '/programs', subtext: 'Our immersive initiatives empower students to engage with diplomacy, leadership, and public speaking — preparing them for impact far beyond the classroom.', imageUrl: '/programshome.jpeg' },
   { id: 2, title: 'Advocacy', path: '/advocacy', subtext: 'We champion youth voices by equipping students with the tools to articulate ideas, challenge norms, and represent communities with confidence and clarity.', imageUrl: 'advocacy.jpeg' },
@@ -732,8 +729,7 @@ const glanceData = [
   { id: 4, title: 'Integrity', path: '/integrity', subtext: 'Grounded in ethics and empathy, our mission is to cultivate principled leaders who lead with purpose and act with responsibility in every forum they enter.', imageUrl: '/integrityhome.jpeg' },
 ];
 
-// Data for the interactive section (Placeholder)
-// Paste this code around line 535
+
 const newsData = [
   {
     id: 1,
@@ -758,12 +754,12 @@ const newsData = [
   }
 ];
 
-// Validate user login details against db.js
+
 function validateUser(email, password) {
   return users.find(user => user.email === email && user.password === password) || null;
 }
 
-// Styled login form container
+
 const LoginContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -927,7 +923,7 @@ const Login = () => {
 
 export default Login;
 
-// --- MOBILE-ONLY LAYOUT FIXES ---
+
 const mobileGlobal = `
   @media (max-width: 768px) {
     & {
@@ -955,4 +951,3 @@ const mobileGlobal = `
     }
   }
 `;
-// Add mobileGlobal to the end of every styled-component definition in this file. 
