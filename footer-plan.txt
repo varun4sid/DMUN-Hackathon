@@ -1,5 +1,0 @@
-Section,Content,Rationale/Design Choice
-Column 1: Logo & Branding,DMUN FOUNDATION Logo/Name,"Left-Aligned. The logo anchors the left side, establishing brand identity immediately."
-Column 2: Quick Links (Navigation),"Donor Relations, Integrity, News, Membership, Privacy Policy, Terms of Use","Organize the existing text links into a clear, single, vertical list with clear headers (e.g., ""Explore"" or ""Quick Links""). This makes the links scannable."
-Column 3: Contact Information,"The Secretariat of the DMUN Foundation Address, The Liaison Office of the DMUN Foundation in the Americas Address, enquiries@dmun.org, Liaison Office Phone, Secretariat Phone","Group all contact details together under a ""Contact Us"" header. Left-align the addresses and phone numbers for better readability, addressing your initial suggestion."
-Bottom Row,"Social Media Icons (Instagram, LinkedIn, YouTube) and Copyright","Place the social media icons and the copyright (© 2025 DMUN Foundation. All Rights Reserved.) on a separate line at the very bottom, typically centered or spread across the row for a clean finish."

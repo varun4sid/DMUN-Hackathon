@@ -22,6 +22,9 @@ import TestPage from './pages/TestPage';
 import Membership from './pages/Membership';
 import Partner from './pages/Partner';
 import Publications from './pages/Publications';
+import Login from './pages/Login';
+import { users } from './db';
+import Organisation from './pages/Organisation';
 
 const GlobalStyle = createGlobalStyle`
   body, h1, h2, h3, h4, h5, h6, p, a, span, div, li, label, input, th, td {
@@ -37,11 +40,13 @@ const GlobalStyle = createGlobalStyle`
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isLoginPage, setIsLoginPage] = useState(false);
+  const [database, setDatabase] = useState(users);
 
   return (
     <Router>
       <GlobalStyle />
-      {!menuOpen && <Header onMenuClick={() => setMenuOpen(true)} />}
+      {!menuOpen && !isLoginPage && <Header onMenuClick={() => setMenuOpen(true)} />}
       <MenuDrawer open={menuOpen} onClose={() => setMenuOpen(false)} />
       <main className="main-content">
         <Routes>
@@ -74,6 +79,8 @@ function App() {
           <Route path="/volunteer" element={<Volunteer />} />
           <Route path="/test" element={<TestPage />} />
           <Route path="/partner" element={<Partner />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/organisation" element={<Organisation />} />
         </Routes>
       </main>
       <Footer />
@@ -81,5 +88,4 @@ function App() {
   )
 }
 
-export default App
-
+export default App;

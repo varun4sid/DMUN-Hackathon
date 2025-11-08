@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+import { UserContext } from '../UserContext';
 
 const DARK_BLUE = '#002147';
 const ABBOT_BLUE = '#44b8f3';
@@ -128,12 +129,46 @@ const Search = styled.input`
   }
 `;
 
+const UserNameLabel = styled.span`
+  font-family: var(--andover-font-sans);
+  font-size: 1rem;
+  color: ${DARK_BLUE};
+  background: #f3f7fa;
+  border-radius: 8px;
+  padding: 0.3rem 0.85rem;
+  margin-right: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  @media (max-width: 600px) { padding: 0.17rem 0.6rem; font-size: 0.95rem; }
+`;
+
+const LoginBtn = styled(NavLink)`
+  padding: 0.36rem 1.1rem;
+  border-radius: 8px;
+  margin-right: 0.6rem;
+  font-size: 1.03rem;
+  font-weight: 600;
+  color: #fff !important;
+  background: #44b8f3;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 1.5px 6px #aad6f730;
+  transition: background 0.15s;
+  &:hover, &.active {
+    background: #177dc0;
+    color: #e7f7ff !important;
+    text-decoration: none;
+  }
+`;
+
 const Header = ({ onMenuClick }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const [searchValue, setSearchValue] = useState('');
   const [showSearch, setShowSearch] = useState(false);
   const [isTransparent, setIsTransparent] = useState(true);
+  const { activeUser } = useContext(UserContext);
 
   const handleSearchKeyDown = (e) => {
     if (e.key === 'Enter' && searchValue.trim()) {
@@ -195,6 +230,13 @@ const Header = ({ onMenuClick }) => {
           <SearchToggle onClick={() => setShowSearch(s => !s)}>
             <SearchGlyph /> Search
           </SearchToggle>
+          {/* Login/Organisation button before user name */}
+          {activeUser ? (
+            <LoginBtn to="/organisation">Organisation</LoginBtn>
+          ) : (
+            <LoginBtn to="/login">Login</LoginBtn>
+          )}
+          <UserNameLabel>{activeUser?.name || 'Guest'}</UserNameLabel>
           <NavLink as="button" onClick={onMenuClick} style={{ background: 'none', border: 'none', cursor: 'pointer' }}>
             <MenuGlyph /> Menu
           </NavLink>
